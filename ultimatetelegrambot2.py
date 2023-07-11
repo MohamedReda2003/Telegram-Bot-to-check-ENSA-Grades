@@ -20,13 +20,13 @@ import threading
 
 #subprocess.check_call([ "playwright", "install", "chromium"])
 
-TOKEN = '5819911264:AAFerjEgyS3sY8S3TBGWr1hnqiKuXR0UcYU'
-CHAT_ID = '-1001988500858'
+TOKEN = 'Bot Token from BotFather'
+CHAT_ID = 'the chatID'
 print("Here we go")
 bot = telebot.TeleBot(TOKEN)
 
 
-cluster=MongoClient("mongodb+srv://fiverrautomation:he3eyetR@cluster0.pshiyd4.mongodb.net/?retryWrites=true&w=majority")
+cluster=MongoClient("Token from MongoDB")
 db =cluster["ENSA2023"]
 collection=db["modules-ENSA2023"]
 bad_collection=db['bab_language']
@@ -48,10 +48,10 @@ def run():
     wait = WebDriverWait(driver, 10)
 
     wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '[placeholder="Email"]'))).click()
-    driver.find_element(By.CSS_SELECTOR, '[placeholder="Email"]').send_keys("zhar.mohamedreda@etu.uae.ac.ma")
+    driver.find_element(By.CSS_SELECTOR, '[placeholder="Email"]').send_keys("email")
     
     driver.find_element(By.CSS_SELECTOR, '[placeholder="Mot de passe"]').click()
-    driver.find_element(By.CSS_SELECTOR, '[placeholder="Mot de passe"]').send_keys("he3eyetR2003")
+    driver.find_element(By.CSS_SELECTOR, '[placeholder="Mot de passe"]').send_keys("password")
     
     driver.find_element(By.XPATH, "/html/body/doctype/section[1]/div/div/div[2]/div/div/form/div/div[3]/button").click()
     print('logged')
@@ -83,7 +83,7 @@ def run():
             modules=affiche['Module affiches']
             for module in modules :
                 if matter==module:
-                    bot.send_message('1798052577', matter)
+                    bot.send_message('chat id', matter)
                     a=True
                     break
             if a==False:
@@ -127,7 +127,7 @@ def check():
             bot.send_message(CHAT_ID, msg)
         except Exception as e :
             print(e)
-            bot.send_message('1798052577', e)
+            bot.send_message('Chat id', e)
             pass
 		
         time.sleep(50)
