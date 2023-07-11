@@ -19,9 +19,9 @@ subprocess.check_call([ "playwright", "install-deps"])
 
 
   
-TOKEN = 'BOt Token from BotFather'
-CHAT_ID1 = '-1001979800418'
-CHAT_ID2 = '-1001988500858'
+TOKEN = 'Bot Token from BotFather'
+CHAT_ID1 = 'the chat id'
+CHAT_ID2 = 'another chat id'
 bot = telebot.TeleBot(TOKEN)
 
 
@@ -127,11 +127,11 @@ def check():
             pass
         except Exception as e :
             error_flag=True 
-            bot.send_message('1798052577', e)
-            bot.send_message('1798052577', str(counter))
+            bot.send_message('chat id', e)
+            bot.send_message('chat id', str(counter))
 
         if counter%10==0:
-            bot.send_message('1798052577', str(counter))
+            bot.send_message('chat id', str(counter))
             
             
         counter+=1
