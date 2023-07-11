@@ -19,7 +19,7 @@ subprocess.check_call([ "playwright", "install-deps"])
 
 
   
-TOKEN = '5819911264:AAFerjEgyS3sY8S3TBGWr1hnqiKuXR0UcYU'
+TOKEN = 'BOt Token from BotFather'
 CHAT_ID1 = '-1001979800418'
 CHAT_ID2 = '-1001988500858'
 bot = telebot.TeleBot(TOKEN)
@@ -50,11 +50,11 @@ def run(collection, affiche):
 
     
         page.locator("[placeholder=\"Email\"]").click()
-        page.locator("[placeholder=\"Email\"]").fill("zhar.mohamedreda@etu.uae.ac.ma")
+        page.locator("[placeholder=\"Email\"]").fill("email")
 
         page.locator("[placeholder=\"Mot de passe\"]").click()
 
-        page.locator("[placeholder=\"Mot de passe\"]").fill("he3eyetR2003")
+        page.locator("[placeholder=\"Mot de passe\"]").fill("password")
       
         page.locator("text=S'authentifier").click()
     
@@ -105,7 +105,7 @@ def check():
     while not error_flag:
         #bot.send_message('1798052577', str(error_flag))
         try:
-            with MongoClient("mongodb+srv://fiverrautomation:he3eyetR@cluster0.pshiyd4.mongodb.net/?retryWrites=true&w=majority") as cluster:
+            with MongoClient("Token from MongoDB") as cluster:
                 db = cluster["ENSA2023"]
                 collection = db["modules-ENSA2023-RATT"]
                 bad_collection = db['bab_language']
