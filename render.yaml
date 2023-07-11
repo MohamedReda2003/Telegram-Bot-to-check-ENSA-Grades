@@ -1,0 +1,17 @@
+name: Python Telegram ENSA grades
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: telebot
+        run: pip install pyTelegramBotAPI
+      - name: install papckages
+        run: pip install playwright
+      - name: database
+        run: pip install pymongo
+      - name: more
+        run: playwright install chromium      
+      - name: Run the task
+        run: python ultimatetelegrambot.py
