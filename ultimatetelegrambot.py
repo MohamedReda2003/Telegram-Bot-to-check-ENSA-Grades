@@ -25,7 +25,7 @@ CHAT_ID2 = 'another chat id'
 bot = telebot.TeleBot(TOKEN)
 
 
-#cluster=MongoClient("mongodb+srv://fiverrautomation:he3eyetR@cluster0.pshiyd4.mongodb.net/?retryWrites=true&w=majority")
+#cluster=MongoClient("")
 #db =cluster["ENSA2023"]
 #collection=db["modules-ENSA2023"]
 #bad_collection=db['bab_language']
