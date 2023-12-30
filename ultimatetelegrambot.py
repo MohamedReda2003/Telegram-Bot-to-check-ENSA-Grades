@@ -103,7 +103,7 @@ def check():
     global error_flag
     counter=0
     while not error_flag:
-        #bot.send_message('1798052577', str(error_flag))
+        #bot.send_message('telegram id', str(error_flag))
         try:
             with MongoClient("Token from MongoDB") as cluster:
                 db = cluster["ENSA2023"]
