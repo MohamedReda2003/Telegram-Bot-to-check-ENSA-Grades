@@ -50,11 +50,11 @@ def run(collection, affiche):
 
     
         page.locator("[placeholder=\"Email\"]").click()
-        page.locator("[placeholder=\"Email\"]").fill("email")
+        page.locator("[placeholder=\"Email\"]").fill("your institutional email")
 
         page.locator("[placeholder=\"Mot de passe\"]").click()
 
-        page.locator("[placeholder=\"Mot de passe\"]").fill("password")
+        page.locator("[placeholder=\"Mot de passe\"]").fill("your password")
       
         page.locator("text=S'authentifier").click()
     
