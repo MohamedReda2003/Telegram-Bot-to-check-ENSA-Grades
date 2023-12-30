@@ -48,10 +48,10 @@ def run():
     wait = WebDriverWait(driver, 10)
 
     wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '[placeholder="Email"]'))).click()
-    driver.find_element(By.CSS_SELECTOR, '[placeholder="Email"]').send_keys("email")
+    driver.find_element(By.CSS_SELECTOR, '[placeholder="Email"]').send_keys("your institutional email")
     
     driver.find_element(By.CSS_SELECTOR, '[placeholder="Mot de passe"]').click()
-    driver.find_element(By.CSS_SELECTOR, '[placeholder="Mot de passe"]').send_keys("password")
+    driver.find_element(By.CSS_SELECTOR, '[placeholder="Mot de passe"]').send_keys("your password")
     
     driver.find_element(By.XPATH, "/html/body/doctype/section[1]/div/div/div[2]/div/div/form/div/div[3]/button").click()
     print('logged')
