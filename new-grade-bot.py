@@ -4,7 +4,6 @@ BEFORE you run the code, create an account on mongodb, create a database, in the
 from playwright.sync_api import Playwright, sync_playwright, expect
 from pymongo import MongoClient
 import time
-import threading
 import sys
 import requests
 import urllib.parse
