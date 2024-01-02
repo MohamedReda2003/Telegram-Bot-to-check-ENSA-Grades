@@ -1,4 +1,6 @@
-# import telebot
+"""
+BEFORE you run the code, create an account on mongodb, create a database, in the case of this code, name it "ENSA2024" and name the collection "modules-ENSA2024"
+"""
 from playwright.sync_api import Playwright, sync_playwright, expect
 from pymongo import MongoClient
 import time
