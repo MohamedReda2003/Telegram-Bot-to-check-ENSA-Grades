@@ -45,7 +45,7 @@ def run(collection, affiche):
             
         result = te.split('\t')
         matter=result[-3]
-        print('\a')
+        #print('\a')
         if matter != "":
             a=False
             modules=affiche['Module affiches']
