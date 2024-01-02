@@ -95,10 +95,12 @@ def check():
         except TypeError :
             pass
         except Exception as e :
-            error_flag=True 
+            #error_flag=True 
+		#I commented the previous line so that the program does not stop when encountering an error, instead, it just restart automatically.
             print(traceback.format_exc())
             
-        if counter%10==0:
+        if counter%50==0:
+		#you can uncomment the following line so that you will be sure the bot is still working.
             # requests.get(f"https://api.callmebot.com/whatsapp.php?phone=212655979800&text={counter}&apikey=9508650")
             pass
             
