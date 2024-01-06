@@ -90,7 +90,10 @@ def run():
                 mfg= f"{matter} est affiche!".replace('é','e')
                 new_list=modules+[f'{matter}']
                 newvalues ={ "$set": { "Module affiches": new_list } }
-                collection.update_one(affiche, newvalues)
+                try:
+                	collection.update_one(affiche, newvalues)
+		except :
+			collection.insert_one(new_list)
             else :
                 mfg=''
         else:
