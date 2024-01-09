@@ -8,7 +8,7 @@ import sys
 import requests
 import urllib.parse
 import traceback
-
+from parsel import Selector
 
 
 # TOKEN = 'TElEGRAM TOKEN FROM BOTFATHER'
@@ -41,15 +41,20 @@ def run(collection, affiche):
     
 
         page.goto("https://ent.ensa-tetouan.ac.ma/?myscore/index")
-        page.is_visible("//html/body/doctype/section/div/div[2]/div[1]/div/table/thead/tr/th[1]")
-        te = page.wait_for_selector('//html/body/doctype/section/div/div[2]/div[1]/div/table', timeout=10000).inner_text()
-            
-        result = te.split('\t')
-        matter=result[-3]
-        #print('\a')
+        page.wait_for_selector("#dentoNav > a.nav-brand > img")
+       
+        
+        html=page.content()
+        response=Selector(text=html)
+        for row in response.css("table > tbody"):
+            matter=row.css("td:nth-child(2)::text").get()
+            # print(matter)
+
         if matter != "":
+            print(matter)
             a=False
             modules=affiche['Module affiches']
+            # if len(modules)>0:
             for module in modules :
                 if matter==module or matter==module.replace('é','e'):
                     #bot.send_message('1798052577', matter)
@@ -58,11 +63,18 @@ def run(collection, affiche):
             if a==False:
                 mfg= f"{matter} est affiche!"
                 new_list=modules+[f'{matter}']
+                print(new_list)
                 newvalues ={ "$set": { "Module affiches": new_list } }
                 try:
-                    collection.update_one(affiche, newvalues)
-                except :
-                    collection.insert_one(new_list)
+                    if len(new_list)>1:
+                        collection.update_one(affiche, newvalues)
+                        print('done updating')
+                    elif len(new_list)==1:
+                        collection.insert_one( { "Module affiches": new_list } )
+                        print('done inserting')
+                except Exception as e :
+                    print(e)
+                    print('error occured on line 95')
             else :
                 mfg=''
         else:
@@ -70,6 +82,7 @@ def run(collection, affiche):
     
         context.close()
         browser.close()
+        # print(mfg)
         return mfg
 
 
@@ -85,11 +98,22 @@ def check():
                 # bad_collection = db['affichage']
                 try:
                     affiche = collection.find_one()
-                except :
-                    affiche={}
-
-                msg = run(collection, affiche)
+                    if affiche==None:
+                        affiche={'Module affiches':[]}
+                except Exception as e:
+                    print('line 120')
+                    # print(e)
+                    affiche={'Module affiches':[]}
+                # print(len(affiche['Module affiches']))
+                try:
+                    msg = run(collection, affiche)
+                except Exception as e:
+                    print(traceback.format_exc())
                 if msg != '':
+                    # try:
+                    #     bot.send_message(CHAT_ID1, msg)
+                    # except :
+                    #     bot.send_message(CHAT_ID2, msg)
                     url_msg=urllib.parse.quote(msg)
                     requests.get(f"https://api.callmebot.com/whatsapp.php?phone={wts_number}&text={url_msg}t&apikey={whatsapp_api_key}")
 
