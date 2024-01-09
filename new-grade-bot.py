@@ -57,7 +57,7 @@ def run(collection, affiche):
             # if len(modules)>0:
             for module in modules :
                 if matter==module or matter==module.replace('é','e'):
-                    #bot.send_message('1798052577', matter)
+                    #bot.send_message('YOUR TELEGRAM CHAT ID', matter)
                     a=True
                     break
             if a==False:
@@ -90,7 +90,7 @@ def check():
     global error_flag
     counter=0
     while not error_flag:
-        #bot.send_message('1798052577', str(error_flag))
+        #bot.send_message('YOUR TELEGRAM CHAT ID', str(error_flag))
         try:
             with MongoClient("YOU CAN GET IT FROM MONGODB") as cluster:
                 db = cluster["ENSA2024"]
